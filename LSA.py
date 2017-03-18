@@ -1,7 +1,6 @@
 import nltk
 from nltk.corpus import stopwords
 
-from string import *
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import Normalizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -51,7 +50,8 @@ class MyCorpus:
 class LSA:
      def __init__(self):
           pass
-     
+
+     #singular value decomposition on the term-document matrix
      def fit(self,corpus,min_term_freq,max_df_prop,n_components):
           self.transformer = TfidfVectorizer(min_df=int(min_term_freq),max_df=float(max_df_prop))
           tfidf = self.transformer.fit_transform(corpus) 
@@ -66,7 +66,8 @@ class Similarity:
           self.transformer = transformer
           self.model = model
           self.norm = NormalizeText()
-          
+     
+     #cosine similarity
      def cos_sim(self,X_col,Y_col):
           dot_prod = np.dot(X_col.T,Y_col)
           X_norm = np.sqrt(np.dot(X_col.T,X_col))
@@ -94,7 +95,7 @@ if __name__=="__main__":
      corpus_file = "corpus_text.txt"
      min_term_freq = 10 #minimum number of times the word must appear in the corpus
      max_df_prop = 0.10 #maximum proportion of documents in which the word appears
-     n_components = 200 #number of components after dimensionality reduction
+     n_components = 200 #number of components for dimensionality reduction
      
      
      if True:
