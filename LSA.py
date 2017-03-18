@@ -98,24 +98,16 @@ if __name__=="__main__":
      n_components = 200 #number of components for dimensionality reduction
      
      
-     if True:
-          #initialize corpus
-          corpus = MyCorpus(corpus_file) #each line in corpus file assumed to be separate document
-          
-          #fit LSA model
-          lsa = LSA()
-          lsa.fit(corpus, min_term_freq, max_df_prop,n_components)
-          
-          #find k most similar terms
-          term = 'unethical'
-          k = 50
-          similarity = Similarity(lsa.transformer,lsa.model)
-          k_closest_terms = similarity.k_closest_terms(k=k,term=term)
-          print k_closest_terms
+     #initialize corpus
+     corpus = MyCorpus(corpus_file) #each line in corpus file assumed to be separate document
      
+     #fit LSA model
+     lsa = LSA()
+     lsa.fit(corpus, min_term_freq, max_df_prop,n_components)
      
-     
-     
-     
-              
-              
+     #find k most similar terms
+     term = 'unethical'
+     k = 50
+     similarity = Similarity(lsa.transformer,lsa.model)
+     k_closest_terms = similarity.k_closest_terms(k=k,term=term)
+     print k_closest_terms
