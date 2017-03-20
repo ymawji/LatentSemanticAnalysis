@@ -1,10 +1,10 @@
 import nltk
 from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
 
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import Normalizer
 from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.stem.porter import PorterStemmer
 from sklearn import metrics
 
 import re
@@ -106,7 +106,7 @@ if __name__=="__main__":
      lsa.fit(corpus, min_term_freq, max_df_prop,n_components)
      
      #find k most similar terms
-     term = 'unethical'
+     term = 'happiness'
      k = 50
      similarity = Similarity(lsa.transformer,lsa.model)
      k_closest_terms = similarity.k_closest_terms(k=k,term=term)
