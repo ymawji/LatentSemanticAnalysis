@@ -82,7 +82,7 @@ class Similarity:
           terms = self.transformer.get_feature_names()
           closestTerms = pd.Series(index=terms)
           
-          for i in range(len(self.model)):
+          for i in xrange(len(self.model)):
                closestTerms.loc[terms[i]] = self.cos_sim(self.model[index,:].T,self.model[i,:].T)
                
           closestTerms.sort_values(ascending=False,inplace=True)
